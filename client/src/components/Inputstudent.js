@@ -15,13 +15,24 @@ class Inputstudent extends React.Component {
     }
 
     handleSubmit = () => {
+        console.log(this.state.firstname !=="" && this.state.lastname !=="" && this.state.place !=="")
+
         if(this.state.firstname !=="" && this.state.lastname !=="" && this.state.place !=="" ) {
             axios
                 .post("/students", this.state)
                 .then(res => {
                     console.log("sucessfully posted on DB");
+                    this.setState({
+                        firstname: "",
+                        lastname: "",
+                        place: ""
+                    })
                 })
-                .catch (err => console.log(err.msg))
+                .catch (err => console.log(err.msg));
+                
+                // refreshing the page
+                window.location = "/";
+            
         }
     }
     render() {

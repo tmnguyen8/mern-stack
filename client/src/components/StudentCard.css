@@ -1,0 +1,12 @@
+.student-card {
+    margin-left: 15px;
+    margin-top: 10px;
+    display: inline-block;
+    background-color: whitesmoke;
+    padding: 16px;
+    border-radius: 10px;
+}
+
+.student-button {
+    margin: 0 10px;
+}

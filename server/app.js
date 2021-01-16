@@ -22,21 +22,19 @@ app.use(express.json())
 
 
 // routes
-app.get("/", (req, res) => {
+app.get("/students", (req, res) => {
+    console.log("testing")
     Student.find()
     .exec()
     .then(result => {
         console.log(result);
-        res.status(200).send(result);
+        res.status(200).json(result);
     })
     .catch(err => {
         res.status(500).send(err);
     })
 })
 app.post("/students", (req, res) => {
-    console.log(req.body)
-    console.log(req.body.lastname)
-    console.log(req.body.place)
     const student = new Student({
         _id : new mongoose.Types.ObjectId,
         firstname: req.body.firstname,
@@ -46,7 +44,7 @@ app.post("/students", (req, res) => {
     })
     student.save()
     .then(result => {
-        console.log(result);
+        // console.log(result);
         res.status(200).json({msg: "successfully saved to DB"})
     }).catch(err => {
         console.log(err)
